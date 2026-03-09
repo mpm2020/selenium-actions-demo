@@ -2,6 +2,7 @@ package step_definitions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 import io.cucumber.java.en.*;
@@ -15,11 +16,16 @@ public class loginSteps {
 
 	@Given("I access the DemoBlaze webpage")
 	public void openWebsite() {
+  
+		ChromeOptions options = new ChromeOptions();
+    	options.addArguments("--headless=new");
+    	options.addArguments("--no-sandbox");
+    	options.addArguments("--disable-dev-shm-usage");
 
-		driver = new ChromeDriver();
+    	driver = new ChromeDriver(options);
 
-		driver.manage().window().maximize();
-		driver.get("https://www.demoblaze.com");
+    	driver.manage().window().maximize();
+    	driver.get("https://www.demoblaze.com");
 
 	}
 
