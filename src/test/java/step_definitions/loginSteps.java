@@ -34,28 +34,27 @@ public class loginSteps {
 
 	@When("I click on login menu")
 	public void clickLoginMenu() {
-
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("login2"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("login2"))).click();
 
 	}
 
 	@And("I enter username {string}")
 	public void enterUsername(String user) {
-		driver.findElement(By.id("loginusername")).sendKeys(user);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginusername"))).sendKeys(user);
 	}
 
 	@And("I enter password {string}")
 	public void enterPassword(String pass) {
-
-	    driver.findElement(By.id("loginpassword")).sendKeys(pass);
+	   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginpassword"))).sendKeys(pass);
 	}
 
 	@And("I click on login button")
 	public void clickLogin() {
-
-		 driver.findElement(By.xpath("//button[text()='Log in']")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Log in']"))).click();
 	}
 
 	@Then("I verify the title")
