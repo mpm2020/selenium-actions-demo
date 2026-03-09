@@ -3,6 +3,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import java.time.Duration;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 import io.cucumber.java.en.*;
@@ -32,7 +35,10 @@ public class loginSteps {
 	@When("I click on login menu")
 	public void clickLoginMenu() {
 
-		  driver.findElement(By.id("login2")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("login2"))).click();
+
 	}
 
 	@And("I enter username {string}")
